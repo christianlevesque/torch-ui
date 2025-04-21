@@ -29,4 +29,13 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.15"/>
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference
+			Condition=" '$(Configuration)' == 'Release' "
+			Include="TorchUI.Core" Version="0.1.0"/>
+		<ProjectReference
+			Condition=" '$(Configuration)' != 'Release' "
+			Include="..\TorchUI.Core\TorchUI.Core.csproj"/>
+	</ItemGroup>
+
 </Project>
