@@ -61,4 +61,22 @@ public class TorchComponentBase : ComponentBase
 	/// Wraps around the <see cref="BuildHtml(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)"/> method so it can be used as a <see cref="RenderFragment"/>
 	/// </summary>
 	protected RenderFragment BuildHtml() => BuildHtml;
+
+	/// <summary>
+	/// Accesses the <see cref="UserAttributes"/> dictionary and retrieves the value of the specified key if it exists. If it does not, it sets the provided default and returns it
+	/// </summary>
+	/// <param name="key">The key of the value to retrieve</param>
+	/// <param name="defaultValue">The default value to use if the key is not set</param>
+	/// <typeparam name="T">The type of the value</typeparam>
+	/// <returns>The value if it exists, else <paramref name="defaultValue"/></returns>
+	protected T GetAttributeWithDefault<T>(string key, T defaultValue)
+	{
+		if (UserAttributes.TryGetValue(key, out var item))
+		{
+			return (T)item;
+		}
+
+		UserAttributes[key] = defaultValue!;
+		return defaultValue;
+	}
 }
