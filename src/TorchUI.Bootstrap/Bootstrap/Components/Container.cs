@@ -15,18 +15,6 @@ public class Container : TorchComponentBase
 	/// <remarks>
 	/// If <see cref="Fluid"/> is <see langword="true"/>, this parameter has no effect.
 	/// </remarks>
-	/// <example>
-	/// A standard container with no max width:
-	/// <code> 
-	/// &lt;Container&gt;...&lt;/Container&gt;
-	/// // Outputs &lt;div class="container"&gt;...&lt;/div&gt;
-	/// </code>
-	/// A container with a large max width:
-	/// <code>
-	/// &lt;Container MaxWidth="Breakpoint.Lg"&gt;...&lt;/Container&gt;
-	/// // Outputs &lt;div class="container-lg"&gt;...&lt;/div&gt;
-	/// </code>
-	/// </example>
 	[Parameter]
 	public Breakpoint MaxWidth { get; set; } = Breakpoint.Xs;
 
@@ -36,20 +24,6 @@ public class Container : TorchComponentBase
 	/// <remarks>
 	/// If <see cref="Fluid"/> is <see langword="true"/>, the <see cref="MaxWidth"/> parameter has no effect.
 	/// </remarks>
-	/// <example>
-	/// A standard, non-fluid container:
-	/// <code>
-	/// &lt;Container&gt;...&lt;/Container&gt;
-	/// // OR
-	/// &lt;Container Fluid="false"&gt;...&lt;/Container&gt;
-	/// // Outputs &lt;div class="container"&gt;...&lt;/div&gt;
-	/// </code>
-	/// A fluid container:
-	/// <code>
-	/// &lt;Container Fluid&gt;...&lt;/Container&gt;
-	/// // Outputs &lt;div class="container-fluid"&gt;...&lt;/div&gt;
-	/// </code>
-	/// </example>
 	[Parameter]
 	public bool Fluid { get; set; }
 
