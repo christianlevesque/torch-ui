@@ -56,4 +56,9 @@ public class TorchComponentBase : ComponentBase
 		rtb.AddContent(3, ChildContent);
 		rtb.CloseElement();
 	}
+
+	/// <summary>
+	/// Wraps around the <see cref="BuildHtml(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)"/> method so it can be used as a <see cref="RenderFragment"/>
+	/// </summary>
+	protected RenderFragment BuildHtml() => BuildHtml;
 }
