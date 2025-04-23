@@ -32,17 +32,22 @@ public class TorchComponentBase : ComponentBase
 	[Parameter(CaptureUnmatchedValues = true)]
 	public Dictionary<string, object> UserAttributes { get; set; } = new();
 
+	/// <inheritdoc/>
+	protected override void OnInitialized()
+	{
+		if (UserAttributes.TryGetValue("class", out var userClasses))
+		{
+			CssBuilder.AddClass(userClasses.ToString());
+			UserAttributes.Remove("class");
+		}
+	}
+
 	/// <summary>
 	/// Builds the render tree using the provided <see cref="Tag"/> and <see cref="ChildContent"/>
 	/// </summary>
 	/// <param name="rtb"></param>
 	protected void BuildHtml(RenderTreeBuilder rtb)
 	{
-		if (UserAttributes.TryGetValue("class", out var userClasses))
-		{
-			CssBuilder.AddClass(userClasses.ToString());
-		}
-
 		var classes = CssBuilder.Build();
 
 		rtb.OpenElement(0, Tag);
