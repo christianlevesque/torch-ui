@@ -31,6 +31,12 @@ public partial class BreadcrumbItem
 	{
 		CssBuilder.AddClass("breadcrumb-item");
 		CssBuilder.AddClass("active", Active);
+
+		if (Active)
+		{
+			UserAttributes["aria-current"] = "page";
+		}
+
 		base.OnInitialized();
 	}
 }
