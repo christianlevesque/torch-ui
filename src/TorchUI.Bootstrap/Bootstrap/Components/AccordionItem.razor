@@ -1,0 +1,42 @@
+﻿@* ReSharper disable once CheckNamespace *@
+@namespace TorchUI.Bootstrap
+@inherits TorchComponentBase
+
+<div
+	@attributes="UserAttributes"
+	class="@CssBuilder.Build()">
+	@if (Header is not null)
+	{
+		@Header.Invoke((_id, Show))
+	}
+	else
+	{
+		<div class="accordion-header">
+			<button
+				class="@CreateToggleButtonClasses()"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="@($"#{_id}")"
+				aria-expanded="@Show"
+				aria-controls="@_id">
+				@Title
+			</button>
+		</div>
+	}
+
+	@if (Content is not null)
+	{
+		@Content.Invoke((_id, AccordionId, Show))
+	}
+	else
+	{
+		<div
+			id="@_id"
+			class="@CreateAccordionCollapseClasses()"
+			data-bs-parent="@(string.IsNullOrEmpty(AccordionId) ? null : $"#{AccordionId}")">
+			<div class="accordion-body">
+				@ChildContent
+			</div>
+		</div>
+	}
+</div>
