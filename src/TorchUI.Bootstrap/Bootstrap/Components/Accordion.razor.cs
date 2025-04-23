@@ -28,7 +28,7 @@ public partial class Accordion
 	{
 		if (!AlwaysOpen)
 		{
-			_id = GetAttributeWithDefault(
+			_id = GetOrSetAttribute(
 				"id",
 				Guid.NewGuid().ToString());
 		}

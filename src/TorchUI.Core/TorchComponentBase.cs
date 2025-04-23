@@ -74,7 +74,7 @@ public class TorchComponentBase : ComponentBase
 	/// <param name="defaultValue">The default value to use if the key is not set</param>
 	/// <typeparam name="T">The type of the value</typeparam>
 	/// <returns>The value if it exists, else <paramref name="defaultValue"/></returns>
-	protected T GetAttributeWithDefault<T>(string key, T defaultValue)
+	protected T GetOrSetAttribute<T>(string key, T defaultValue)
 	{
 		if (UserAttributes.TryGetValue(key, out var item))
 		{
