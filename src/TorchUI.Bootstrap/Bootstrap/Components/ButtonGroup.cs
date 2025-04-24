@@ -18,11 +18,22 @@ public class ButtonGroup : TorchComponentBase
 	[Parameter]
 	public string? Label { get; set; }
 
+	/// <summary>
+	/// The Bootstrap size of the button group
+	/// </summary>
+	[Parameter]
+	public Size Size { get; set; } = Size.Medium;
+
 	/// <inheritdoc />
 	protected override void BuildRenderTree(RenderTreeBuilder builder)
 	{
 		CssBuilder.AddClass("btn-group");
 		GetOrSetAttribute("role", "group");
+
+		if (Size is not Size.Medium)
+		{
+			CssBuilder.AddClass(Size.GetSizeClass("btn-group"));
+		}
 
 		if (!string.IsNullOrEmpty(Label))
 		{
