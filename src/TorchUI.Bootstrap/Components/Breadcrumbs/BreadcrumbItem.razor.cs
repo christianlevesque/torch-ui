@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
-namespace TorchUI.Bootstrap;
+namespace TorchUI.Bootstrap.Components;
 
 /// <summary>
 /// Represents a Bootstrap <c>.breadcrumb-item</c>

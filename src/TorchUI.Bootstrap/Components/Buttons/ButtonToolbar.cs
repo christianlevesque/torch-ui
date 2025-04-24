@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
-namespace TorchUI.Bootstrap;
+namespace TorchUI.Bootstrap.Components;
 
 /// <summary>
 /// Represents a Bootstrap <c>.btn-toolbar</c>
