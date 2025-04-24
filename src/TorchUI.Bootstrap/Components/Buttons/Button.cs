@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;

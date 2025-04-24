@@ -2,12 +2,12 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace TorchUI.Bootstrap;
+namespace TorchUI.Bootstrap.Extensions;
 
 /// <summary>
 /// Contains extension methods used within the TorchUI.Bootstrap assembly
 /// </summary>
-public static class Extensions
+public static class EnumExtensions
 {
 	/// <summary>
 	/// Gets the value of the <see cref="DescriptionAttribute"/> if defined, or else the name of the enum member as a string
