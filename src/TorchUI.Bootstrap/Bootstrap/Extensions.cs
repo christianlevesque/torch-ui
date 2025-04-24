@@ -31,4 +31,13 @@ public static class Extensions
 	/// <returns>the theme color name as a lowercase string</returns>
 	public static string GetThemeColor(this ThemeColor self)
 		=> self.ToString().ToLowerInvariant();
+
+	/// <summary>
+	/// Returns the specified size concatenated to the provided CSS class prefix
+	/// </summary>
+	/// <param name="self">The size</param>
+	/// <param name="prefix">The CSS class prefix</param>
+	/// <returns>the size name converted to a CSS class</returns>
+	public static string GetSizeClass(this Size self, string prefix)
+		=> $"{prefix}-{self.GetDescription()}";
 }
