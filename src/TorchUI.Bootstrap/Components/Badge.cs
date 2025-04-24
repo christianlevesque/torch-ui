@@ -38,7 +38,7 @@ public class Badge : TorchComponentBase
 	/// <inheritdoc />
 	protected override void BuildRenderTree(RenderTreeBuilder builder)
 	{
-		CssBuilder.AddClass($"text-bg-{Color.GetThemeColor()}");
+		CssBuilder.AddClass(Color.GetThemeColorClass("text-bg"));
 
 		if (Pill)
 		{

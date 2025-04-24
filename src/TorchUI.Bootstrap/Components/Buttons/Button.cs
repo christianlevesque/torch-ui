@@ -85,7 +85,7 @@ public class Button : TorchComponentBase
 		if (Color is not null)
 		{
 			var outlinedInfix = Outlined ? "-outline" : string.Empty;
-			CssBuilder.AddClass($"btn{outlinedInfix}-{Color.Value.GetThemeColor()}");
+			CssBuilder.AddClass(Color.Value.GetThemeColorClass($"btn{outlinedInfix}"));
 		}
 
 		if (Size is not Size.Medium)

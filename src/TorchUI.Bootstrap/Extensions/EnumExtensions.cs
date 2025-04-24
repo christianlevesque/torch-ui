@@ -25,12 +25,13 @@ public static class EnumExtensions
 	}
 
 	/// <summary>
-	/// Returns the lowercase string value of the given <see cref="ThemeColor"/>
+	/// Returns the specified theme color name contcatenated to the provided CSS class prefix
 	/// </summary>
 	/// <param name="self">The theme color</param>
+	/// <param name="prefix">The CSS class prefix</param>
 	/// <returns>the theme color name as a lowercase string</returns>
-	public static string GetThemeColor(this ThemeColor self)
-		=> self.ToString().ToLowerInvariant();
+	public static string GetThemeColorClass(this ThemeColor self, string prefix)
+		=> $"{prefix}-{self.ToString().ToLowerInvariant()}";
 
 	/// <summary>
 	/// Returns the specified size concatenated to the provided CSS class prefix
