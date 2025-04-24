@@ -24,6 +24,12 @@ public class Button : TorchComponentBase
 	public ThemeColor? Color { get; set; }
 
 	/// <summary>
+	/// The Bootstrap size of the button
+	/// </summary>
+	[Parameter]
+	public Size Size { get; set; } = Size.Medium;
+
+	/// <summary>
 	/// Whether the button should be outlined
 	/// </summary>
 	/// <remarks>
@@ -79,6 +85,11 @@ public class Button : TorchComponentBase
 		{
 			var outlinedInfix = Outlined ? "-outline" : string.Empty;
 			CssBuilder.AddClass($"btn{outlinedInfix}-{Color.Value.GetThemeColor()}");
+		}
+
+		if (Size is not Size.Medium)
+		{
+			CssBuilder.AddClass(Size.GetSizeClass("btn"));
 		}
 
 		if (Toggle.HasValue)
