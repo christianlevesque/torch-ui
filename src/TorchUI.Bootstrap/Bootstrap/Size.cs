@@ -1,4 +1,6 @@
-﻿namespace TorchUI.Bootstrap;
+﻿using System.ComponentModel;
+
+namespace TorchUI.Bootstrap;
 
 /// <summary>
 /// Represents the available sizes in Bootstrap
@@ -8,6 +10,7 @@ public enum Size
 	/// <summary>
 	/// Represents the small size in Bootstrap
 	/// </summary>
+	[Description("sm")]
 	Small,
 
 	/// <summary>
@@ -18,5 +21,6 @@ public enum Size
 	/// <summary>
 	/// Represents the large size in Bootstrap
 	/// </summary>
+	[Description("lg")]
 	Large
 }
