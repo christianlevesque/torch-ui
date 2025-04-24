@@ -34,6 +34,38 @@ public static class EnumExtensions
 		=> $"{prefix}-{self.ToString().ToLowerInvariant()}";
 
 	/// <summary>
+	/// Returns the <c>bg-*</c> class for the provided Bootstrap theme color
+	/// </summary>
+	/// <param name="self">The theme color</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetBgColorClass(this ThemeColor self)
+		=> GetThemeColorClass(self, "bg");
+
+	/// <summary>
+	/// Returns the <c>text-*</c> class for the provided Bootstrap theme color
+	/// </summary>
+	/// <param name="self">The theme color</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetTextColorClass(this ThemeColor self)
+		=> GetThemeColorClass(self, "text");
+
+	/// <summary>
+	/// Returns the <c>text-bg-*</c> class for the provided Bootstrap theme color
+	/// </summary>
+	/// <param name="self">The theme color</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetTextBgColorClass(this ThemeColor self)
+		=> GetThemeColorClass(self, "text-bg");
+
+	/// <summary>
+	/// Returns the <c>border-*</c> class for the provided Bootstrap theme color
+	/// </summary>
+	/// <param name="self">The theme color</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetBorderColorClass(this ThemeColor self)
+		=> GetThemeColorClass(self, "border");
+
+	/// <summary>
 	/// Returns the specified size concatenated to the provided CSS class prefix
 	/// </summary>
 	/// <param name="self">The size</param>
