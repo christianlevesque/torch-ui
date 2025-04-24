@@ -25,6 +25,17 @@ public static class EnumExtensions
 	}
 
 	/// <summary>
+	/// Returns the specified position name concatenated to the provided CSS class prefix
+	/// </summary>
+	/// <param name="self">The position</param>
+	/// <param name="prefix">The CSS class prefix</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetPositionClass(
+		this Position self,
+		string prefix)
+		=> $"{prefix}-{self.ToString().ToLowerInvariant()}";
+
+	/// <summary>
 	/// Returns the specified theme color name contcatenated to the provided CSS class prefix
 	/// </summary>
 	/// <param name="self">The theme color</param>
