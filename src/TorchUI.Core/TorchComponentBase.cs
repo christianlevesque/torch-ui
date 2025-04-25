@@ -42,6 +42,12 @@ public class TorchComponentBase : ComponentBase
 		}
 	}
 
+	/// <inheritdoc />
+	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	{
+		BuildHtml(builder);
+	}
+
 	/// <summary>
 	/// Builds the render tree using the provided <see cref="Tag"/> and <see cref="ChildContent"/>
 	/// </summary>
