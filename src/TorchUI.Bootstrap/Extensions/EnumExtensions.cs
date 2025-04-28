@@ -25,6 +25,21 @@ public static class EnumExtensions
 	}
 
 	/// <summary>
+	/// Returns the specified breakpoint name formatted as a Bootstrap display class (<c>d-{breakpoint}</c>) with the given suffix
+	/// </summary>
+	/// <param name="self">The breakpoint</param>
+	/// <param name="suffix">The CSS class suffix</param>
+	/// <returns>The formatted CSS classes</returns>
+	public static string GetBreakpointDisplayClass(
+		this Breakpoint self,
+		string suffix)
+	{
+		return self is Breakpoint.Xs
+			? $"d-{suffix}"
+			: $"d-{self.ToString().ToLowerInvariant()}-{suffix}";
+	}
+
+	/// <summary>
 	/// Returns the specified position name concatenated to the provided CSS class prefix
 	/// </summary>
 	/// <param name="self">The position</param>
