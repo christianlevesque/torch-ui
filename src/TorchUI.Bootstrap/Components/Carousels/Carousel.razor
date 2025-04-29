@@ -1,0 +1,42 @@
+﻿@* ReSharper disable once CheckNamespace *@
+@namespace TorchUI.Bootstrap.Components
+@inherits TorchComponentBase
+
+<CascadingValue Value="@this">
+	<CascadingValue
+		Name="CarouselId"
+		Value="@_id">
+		<TorchComponentBase
+			Tag="@Tag"
+			@attributes="UserAttributes"
+			class="@CssBuilder.Build()">
+			@if (Indicators is not null)
+			{
+				@Indicators
+			}
+			else if (!DisableIndicators)
+			{
+				<div class="carousel-indicators">
+					@for (var i = 0; i < _carouselItems.Count; i++)
+					{
+						var item = _carouselItems[i];
+						<CarouselIndicator
+							Active="item.Active"
+							Index="i"
+							Label="@item.Label"/>
+					}
+				</div>
+			}
+			<div class="carousel-inner">
+				@ChildContent
+			</div>
+		</TorchComponentBase>
+	</CascadingValue>
+</CascadingValue>
+
+<style>
+	.carousel-item {
+		height: 200px;
+		width:  100%;
+	} 
+</style>

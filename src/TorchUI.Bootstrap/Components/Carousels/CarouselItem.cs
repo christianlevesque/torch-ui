@@ -24,13 +24,13 @@ public class CarouselItem : TorchComponentBase
 	[Parameter]
 	public bool Active { get; set; }
 
-	// [CascadingParameter]
-	// private Carousel Parent { get; set; } = null!;
+	[CascadingParameter]
+	private Carousel Parent { get; set; } = null!;
 
 	/// <inheritdoc />
 	protected override void OnInitialized()
 	{
-		// Parent.AddCarouselItem(this);
+		Parent.AddCarouselItem(this);
 		CssBuilder.AddClass("carousel-item");
 		CssBuilder.AddClass("active", Active);
 
