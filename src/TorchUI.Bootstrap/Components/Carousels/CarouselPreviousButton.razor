@@ -1,0 +1,13 @@
+﻿@* ReSharper disable once CheckNamespace *@
+@namespace TorchUI.Bootstrap.Components
+@inherits TorchComponentBase
+
+<button
+	@attributes="UserAttributes"
+	class="@CssBuilder.Build()"
+	type="button"
+	data-bs-target="#@ParentId"
+	data-bs-slide="prev">
+	<span class="carousel-control-prev-icon" aria-hidden="true"/>
+	<span class="visually-hidden">Previous</span>
+</button>
