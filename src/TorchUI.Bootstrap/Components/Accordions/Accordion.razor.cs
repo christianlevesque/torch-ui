@@ -10,6 +10,9 @@ namespace TorchUI.Bootstrap.Components;
 public partial class Accordion
 {
 	private string? _id;
+	private readonly string _fallbackId = Guid
+		.NewGuid()
+		.ToString();
 
 	/// <summary>
 	/// Whether to remove some borders and rounded corners. Corresponds to the Bootstrap <c>.accordion-flush</c> class
@@ -24,18 +27,16 @@ public partial class Accordion
 	public bool AlwaysOpen { get; set; }
 
 	/// <inheritdoc/>
-	protected override void OnInitialized()
+	protected override void SetupAttributes()
 	{
 		if (!AlwaysOpen)
 		{
 			_id = GetOrSetAttribute(
 				"id",
-				Guid.NewGuid().ToString());
+				_fallbackId);
 		}
 
 		CssBuilder.AddClass("accordion");
 		CssBuilder.AddClass("accordion-flush", Flush);
-
-		base.OnInitialized();
 	}
 }

@@ -9,6 +9,9 @@ public partial class Carousel
 {
 	private readonly List<CarouselItem> _carouselItems = [];
 	private string _id = string.Empty;
+	private readonly string _fallbackId = Guid
+		.NewGuid()
+		.ToString();
 
 	/// <summary>
 	/// The autoplay interval for carousel slides, in milliseconds
@@ -95,11 +98,11 @@ public partial class Carousel
 	}
 
 	/// <inheritdoc />
-	protected override void OnInitialized()
+	protected override void SetupAttributes()
 	{
 		_id = GetOrSetAttribute(
 			"id",
-			Guid.NewGuid().ToString());
+			_fallbackId);
 		CssBuilder.AddClass("carousel slide");
 		CssBuilder.AddClass("carousel-fade", Fade);
 
@@ -136,7 +139,5 @@ public partial class Carousel
 		{
 			UserAttributes["data-bs-wrap"] = "false";
 		}
-
-		base.OnInitialized();
 	}
 }

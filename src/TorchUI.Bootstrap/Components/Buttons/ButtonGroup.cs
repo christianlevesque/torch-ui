@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -26,7 +25,7 @@ public class ButtonGroup : TorchComponentBase
 	public Size Size { get; set; } = Size.Medium;
 
 	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("btn-group");
 		GetOrSetAttribute("role", "group");
@@ -40,7 +39,5 @@ public class ButtonGroup : TorchComponentBase
 		{
 			GetOrSetAttribute("aria-label", Label);
 		}
-
-		BuildHtml(builder);
 	}
 }

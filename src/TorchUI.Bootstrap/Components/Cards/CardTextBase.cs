@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -24,7 +23,7 @@ public abstract class CardTextBase : TorchComponentBase
 	}
 
 	/// <inheritdoc/>
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass(_baseCssClass);
 
@@ -32,7 +31,5 @@ public abstract class CardTextBase : TorchComponentBase
 		{
 			CssBuilder.AddClass(TextColor.Value.GetTextColorClass());
 		}
-
-		BuildHtml(builder);
 	}
 }

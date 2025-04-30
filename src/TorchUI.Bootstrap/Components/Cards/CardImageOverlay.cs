@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Rendering;
-
-// ReSharper disable once CheckNamespace
+﻿// ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
 
 /// <summary>
@@ -8,10 +6,8 @@ namespace TorchUI.Bootstrap.Components;
 /// </summary>
 public class CardImageOverlay : TorchComponentBase
 {
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("card-img-overlay");
-
-		BuildHtml(builder);
 	}
 }

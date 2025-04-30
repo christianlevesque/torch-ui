@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -31,19 +30,17 @@ public class CarouselItem : TorchComponentBase
 	protected override void OnInitialized()
 	{
 		Parent.AddCarouselItem(this);
-		CssBuilder.AddClass("carousel-item");
-		CssBuilder.AddClass("active", Active);
-
-		base.OnInitialized();
 	}
 
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
+		CssBuilder
+			.AddClass("carousel-item")
+			.AddClass("active", Active);
+
 		if (Interval > 0)
 		{
 			UserAttributes["data-bs-interval"] = Interval;
 		}
-
-		base.BuildRenderTree(builder);
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -33,10 +32,11 @@ public class CarouselIndicator : TorchComponentBase
 	[CascadingParameter(Name = "CarouselId")]
 	private string ParentId { get; set; } = string.Empty;
 
+	public CarouselIndicator() => Tag = "button";
+
 	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
-		Tag = "button";
 		UserAttributes["data-bs-target"] = $"#{ParentId}";
 		UserAttributes["data-bs-slide-to"] = Index;
 		UserAttributes["aria-label"] = string.IsNullOrEmpty(Label)
@@ -48,7 +48,5 @@ public class CarouselIndicator : TorchComponentBase
 			CssBuilder.AddClass("active");
 			UserAttributes["aria-current"] = "true";
 		}
-
-		BuildHtml(builder);
 	}
 }

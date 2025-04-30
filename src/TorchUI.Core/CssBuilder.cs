@@ -38,5 +38,14 @@ public class CssBuilder
 	/// </summary>
 	/// <returns>the CSS string, if any</returns>
 	public string? Build()
-		=> _classes.Count > 0 ? string.Join(' ', _classes) : null;
+	{
+		if (_classes.Count == 0)
+		{
+			return null;
+		}
+
+		var built = string.Join(' ', _classes);
+		_classes.Clear();
+		return built;
+	}
 }

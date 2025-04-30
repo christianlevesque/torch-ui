@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -27,7 +26,8 @@ public class Container : TorchComponentBase
 	[Parameter]
 	public bool Fluid { get; set; }
 
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	/// <inheritdoc />
+	protected override void SetupAttributes()
 	{
 		// If XS, only add "container"
 		CssBuilder.AddClass(
@@ -41,7 +41,5 @@ public class Container : TorchComponentBase
 
 		// If fluid, only add "container-fluid"
 		CssBuilder.AddClass("container-fluid", Fluid);
-
-		BuildHtml(builder);
 	}
 }

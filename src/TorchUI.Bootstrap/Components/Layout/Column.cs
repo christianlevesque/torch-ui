@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -143,7 +142,8 @@ public class Column : TorchComponentBase
 
 #endregion
 
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	/// <inheritdoc />
+	protected override void SetupAttributes()
 	{
 		AddBreakpointCols(null, Xs);
 		AddBreakpointCols("sm", Sm);
@@ -158,7 +158,5 @@ public class Column : TorchComponentBase
 		AddBreakpointOffsets("lg", LgOffset);
 		AddBreakpointOffsets("xl", XlOffset);
 		AddBreakpointOffsets("xxl", XxlOffset);
-
-		BuildHtml(builder);
 	}
 }

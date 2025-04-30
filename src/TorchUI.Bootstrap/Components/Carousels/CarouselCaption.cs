@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -23,7 +22,7 @@ public class CarouselCaption : TorchComponentBase
 	public Breakpoint? ShowOn { get; set; }
 
 	/// <inheritdoc/>
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("carousel-caption");
 
@@ -36,7 +35,5 @@ public class CarouselCaption : TorchComponentBase
 		{
 			CssBuilder.AddClass(ShowOn.Value.GetBreakpointDisplayClass("block"));
 		}
-
-		BuildHtml(builder);
 	}
 }

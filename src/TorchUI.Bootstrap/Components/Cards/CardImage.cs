@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -49,7 +48,7 @@ public class CardImage : TorchComponentBase
 		Tag = "img";
 	}
 
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		if (_position is not null)
 		{
@@ -59,7 +58,5 @@ public class CardImage : TorchComponentBase
 		{
 			CssBuilder.AddClass("card-img");
 		}
-
-		BuildHtml(builder);
 	}
 }

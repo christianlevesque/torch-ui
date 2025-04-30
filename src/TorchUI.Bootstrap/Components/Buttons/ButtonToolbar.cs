@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -19,7 +18,7 @@ public class ButtonToolbar : TorchComponentBase
 	public string? Label { get; set; }
 
 	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("btn-toolbar");
 		GetOrSetAttribute("role", "toolbar");
@@ -28,7 +27,5 @@ public class ButtonToolbar : TorchComponentBase
 		{
 			GetOrSetAttribute("aria-label", Label);
 		}
-
-		BuildHtml(builder);
 	}
 }

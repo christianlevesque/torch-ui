@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -18,13 +17,12 @@ public class CloseButton : TorchComponentBase
 	[Parameter]
 	public string Label { get; set; } = "Close";
 
+	public CloseButton() => Tag = "button";
+
 	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
-		Tag = "button";
 		CssBuilder.AddClass("btn-close");
 		UserAttributes.TryAdd("aria-label", Label);
-
-		BuildHtml(builder);
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 
 // ReSharper disable once CheckNamespace
 namespace TorchUI.Bootstrap.Components;
@@ -214,7 +213,8 @@ public class Row : TorchComponentBase
 
 #endregion
 
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	/// <inheritdoc />
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("row");
 
@@ -248,7 +248,5 @@ public class Row : TorchComponentBase
 		AddGutters("y-lg", LgGutterY);
 		AddGutters("y-xl", XlGutterY);
 		AddGutters("y-xxl", XxlGutterY);
-
-		BuildHtml(builder);
 	}
 }

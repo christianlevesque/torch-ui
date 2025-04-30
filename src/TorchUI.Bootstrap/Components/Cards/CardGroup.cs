@@ -9,10 +9,8 @@ namespace TorchUI.Bootstrap.Components;
 public class CardGroup : TorchComponentBase
 {
 	/// <inheritdoc/>
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("card-group");
-
-		BuildHtml(builder);
 	}
 }

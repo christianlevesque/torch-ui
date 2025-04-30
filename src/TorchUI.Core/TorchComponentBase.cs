@@ -33,13 +33,19 @@ public class TorchComponentBase : ComponentBase
 	public Dictionary<string, object> UserAttributes { get; set; } = new();
 
 	/// <inheritdoc/>
-	protected override void OnInitialized()
+	protected override void OnParametersSet()
 	{
 		if (UserAttributes.TryGetValue("class", out var userClasses))
 		{
-			CssBuilder.AddClass(userClasses.ToString());
+			// ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+			if (userClasses is not null)
+			{
+				CssBuilder.AddClass(userClasses.ToString());
+			}
 			UserAttributes.Remove("class");
 		}
+
+		SetupAttributes();
 	}
 
 	/// <inheritdoc />
@@ -90,4 +96,9 @@ public class TorchComponentBase : ComponentBase
 		UserAttributes[key] = defaultValue!;
 		return defaultValue;
 	}
+
+	/// <summary>
+	/// Performs additional attribute setup, called in <see cref="OnParametersSet"/>
+	/// </summary>
+	protected virtual void SetupAttributes() {}
 }

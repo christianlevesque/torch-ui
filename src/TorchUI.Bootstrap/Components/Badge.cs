@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -36,7 +35,7 @@ public class Badge : TorchComponentBase
 	}
 
 	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass(Color.GetThemeColorClass("text-bg"));
 
@@ -44,7 +43,5 @@ public class Badge : TorchComponentBase
 		{
 			CssBuilder.AddClass("rounded-pill");
 		}
-
-		BuildHtml(builder);
 	}
 }

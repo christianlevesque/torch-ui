@@ -27,7 +27,7 @@ public partial class BreadcrumbItem
 	public string? Href { get; set; }
 
 	/// <inheritdoc />
-	protected override void OnInitialized()
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("breadcrumb-item");
 		CssBuilder.AddClass("active", Active);
@@ -36,7 +36,5 @@ public partial class BreadcrumbItem
 		{
 			UserAttributes["aria-current"] = "page";
 		}
-
-		base.OnInitialized();
 	}
 }

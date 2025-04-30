@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -48,8 +47,7 @@ public class Button : TorchComponentBase
 	[Parameter]
 	public bool? Toggle { get; set; }
 
-	/// <inheritdoc />
-	protected override void BuildRenderTree(RenderTreeBuilder builder)
+	protected override void SetupAttributes()
 	{
 		// Anchor tags don't need a type attribute
 		var omitType = false;
@@ -99,7 +97,5 @@ public class Button : TorchComponentBase
 			UserAttributes.Add("aria-pressed", Toggle.Value.ToString().ToLowerInvariant());
 			CssBuilder.AddClass("active", Toggle.Value);
 		}
-
-		BuildHtml(builder);
 	}
 }

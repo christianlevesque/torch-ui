@@ -11,10 +11,10 @@ public partial class CarouselNextButton
 	[CascadingParameter(Name = "CarouselId")]
 	private string ParentId { get; set; } = string.Empty;
 
-	protected override void OnInitialized()
+	/// <inheritdoc />
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("carousel-control-next");
-		base.OnInitialized();
 	}
 }
 

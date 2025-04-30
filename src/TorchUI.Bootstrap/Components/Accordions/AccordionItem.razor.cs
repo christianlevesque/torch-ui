@@ -10,6 +10,9 @@ namespace TorchUI.Bootstrap.Components;
 public partial class AccordionItem
 {
 	private string _id = string.Empty;
+	private readonly string _fallbackId = Guid
+		.NewGuid()
+		.ToString();
 
 	/// <summary>
 	/// The content to render in place of the <c>.accordion-header</c> content
@@ -53,17 +56,15 @@ public partial class AccordionItem
 	public string? AccordionId { get; set; }
 
 	/// <inheritdoc/>
-	protected override void OnInitialized()
+	protected override void SetupAttributes()
 	{
 		CssBuilder.AddClass("accordion-item");
 		_id = UserAttributes.TryGetValue("id", out var id)
 			? id.ToString()!
-			: Guid.NewGuid().ToString();
+			: _fallbackId;
 
 		// The ID should be removed so it isn't added to the accordion wrapper
 		UserAttributes.Remove("id");
-
-		base.OnInitialized();
 	}
 
 	private string CreateToggleButtonClasses()
