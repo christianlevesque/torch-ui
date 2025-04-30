@@ -30,6 +30,16 @@
 			<div class="carousel-inner">
 				@ChildContent
 			</div>
+
+			@if (Controls is not null)
+			{
+				@Controls
+			}
+			else if (!DisableControls)
+			{
+				<CarouselPreviousButton/>
+				<CarouselNextButton/>
+			}
 		</TorchComponentBase>
 	</CascadingValue>
 </CascadingValue>

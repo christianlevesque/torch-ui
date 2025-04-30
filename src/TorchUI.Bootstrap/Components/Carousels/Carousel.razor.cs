@@ -26,6 +26,15 @@ public partial class Carousel
 	public bool DisableIndicators { get; set; }
 
 	/// <summary>
+	/// Whether to suppress automatic rendering of carousel next and previous controls
+	/// </summary>
+	/// <remarks>
+	/// If the <see cref="Controls"/> <see cref="RenderFragment"/> is supplied, this parameter has no effect.
+	/// </remarks>
+	[Parameter]
+	public bool DisableControls { get; set; }
+
+	/// <summary>
 	/// Whether to disable touch swiping
 	/// </summary>
 	[Parameter]
