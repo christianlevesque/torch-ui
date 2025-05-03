@@ -1,0 +1,20 @@
+﻿@* ReSharper disable once CheckNamespace *@
+@namespace TorchUI.Bootstrap.Components
+@inherits TorchComponentBase
+
+<TorchComponentBase
+	Tag="@Tag"
+	@attributes="UserAttributes"
+	class="@CssBuilder.Build()">
+	@if (ChildContent is not null)
+	{
+		@ChildContent
+	}
+	else
+	{
+		<h1 class="@($"modal-title h{TitleSize}")">
+			@Title
+		</h1>
+		<CloseButton data-bs-dismiss="modal"/>
+	}
+</TorchComponentBase>
