@@ -40,6 +40,21 @@ public static class EnumExtensions
 	}
 
 	/// <summary>
+	/// Returns the specified breakpoint name concatenated to the provided CSS class prefix
+	/// </summary>
+	/// <param name="self">The breakpoint</param>
+	/// <param name="prefix">The CSS class prefix</param>
+	/// <returns>The formatted CSS class</returns>
+	public static string GetBreakpointClass(
+		this Breakpoint self,
+		string prefix)
+	{
+		return self is Breakpoint.Xs
+			? prefix
+			: $"{prefix}-{self.ToString().ToLowerInvariant()}";
+	}
+
+	/// <summary>
 	/// Returns the specified position name concatenated to the provided CSS class prefix
 	/// </summary>
 	/// <param name="self">The position</param>
