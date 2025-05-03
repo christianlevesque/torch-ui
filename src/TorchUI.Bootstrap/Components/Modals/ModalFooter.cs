@@ -6,6 +6,8 @@ namespace TorchUI.Bootstrap.Components;
 /// </summary>
 public class ModalFooter : TorchComponentBase
 {
+	public ModalFooter() => Tag = "footer";
+
 	/// <inheritdoc/>
 	protected override void SetupAttributes()
 	{
