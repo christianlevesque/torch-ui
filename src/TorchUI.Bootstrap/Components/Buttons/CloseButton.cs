@@ -17,6 +17,12 @@ public class CloseButton : TorchComponentBase
 	[Parameter]
 	public string Label { get; set; } = "Close";
 
+	/// <summary>
+	/// The dismiss action of the button
+	/// </summary>
+	[Parameter]
+	public Toggle? Dismiss { get; set; }
+
 	public CloseButton() => Tag = "button";
 
 	/// <inheritdoc />
@@ -24,5 +30,12 @@ public class CloseButton : TorchComponentBase
 	{
 		CssBuilder.AddClass("btn-close");
 		UserAttributes.TryAdd("aria-label", Label);
+
+		if (Dismiss.HasValue)
+		{
+			UserAttributes.Add(
+				"data-bs-dismiss",
+				Dismiss.Value.ToString().ToLowerInvariant());
+		}
 	}
 }
