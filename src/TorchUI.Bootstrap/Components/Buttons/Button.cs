@@ -37,6 +37,12 @@ public class Button : TorchComponentBase
 	public Toggle? Toggle { get; set; }
 
 	/// <summary>
+	/// The dismiss action of the button
+	/// </summary>
+	[Parameter]
+	public Toggle? Dismiss { get; set; }
+
+	/// <summary>
 	/// The target of the toggle action
 	/// </summary>
 	[Parameter]
@@ -99,6 +105,13 @@ public class Button : TorchComponentBase
 		if (Size is not Size.Medium)
 		{
 			CssBuilder.AddClass(Size.GetSizeClass("btn"));
+		}
+
+		if (Dismiss.HasValue)
+		{
+			UserAttributes.Add(
+				"data-bs-dismiss",
+				Dismiss.Value.ToString().ToLowerInvariant());
 		}
 
 		if (Toggle.HasValue)
