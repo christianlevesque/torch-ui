@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
 using TorchUI.Bootstrap.Extensions;
 
 // ReSharper disable once CheckNamespace
@@ -30,6 +31,18 @@ public class Button : TorchComponentBase
 	public Size Size { get; set; } = Size.Medium;
 
 	/// <summary>
+	/// The toggle action of the button
+	/// </summary>
+	[Parameter]
+	public Toggle? Toggle { get; set; }
+
+	/// <summary>
+	/// Whether the button should be rendered as active
+	/// </summary>
+	[Parameter]
+	public bool Active { get; set; }
+
+	/// <summary>
 	/// Whether the button should be outlined
 	/// </summary>
 	/// <remarks>
@@ -37,15 +50,6 @@ public class Button : TorchComponentBase
 	/// </remarks>
 	[Parameter]
 	public bool Outlined { get; set; }
-
-	/// <summary>
-	/// The active state of the button
-	/// </summary>
-	/// <remarks>
-	/// Because this parameter is a <c>bool?</c>, it has no effect if not explicitly supplied. If an explicit <see langword="true"/> value is passed, the button will be an active toggle button. If an explicit <see langword="false"/> value is passed, the button will be an inactive toggle button. If no explicit value is passed, the button will not be a toggle button at all.
-	/// </remarks>
-	[Parameter]
-	public bool? Toggle { get; set; }
 
 	protected override void SetupAttributes()
 	{
@@ -93,9 +97,29 @@ public class Button : TorchComponentBase
 
 		if (Toggle.HasValue)
 		{
-			UserAttributes.Add("data-bs-toggle", "button");
-			UserAttributes.Add("aria-pressed", Toggle.Value.ToString().ToLowerInvariant());
-			CssBuilder.AddClass("active", Toggle.Value);
+			MakeToggleButton();
 		}
+	}
+
+	private void MakeToggleButton()
+	{
+		// ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
+		switch (Toggle!.Value)
+		{
+			case Bootstrap.Toggle.Button:
+				if (Active)
+				{
+					CssBuilder.AddClass("active");
+					UserAttributes.Add("aria-pressed", "true");
+				}
+
+				break;
+			default:
+				throw new InvalidOperationException($"Buttons do support a toggle value of {Toggle!.Value}");
+		}
+
+		UserAttributes.Add(
+			"data-bs-toggle",
+			Toggle!.Value.ToString().ToLowerInvariant());
 	}
 }
