@@ -37,6 +37,12 @@ public class Button : TorchComponentBase
 	public Toggle? Toggle { get; set; }
 
 	/// <summary>
+	/// The target of the toggle action
+	/// </summary>
+	[Parameter]
+	public string? Target { get; set; }
+
+	/// <summary>
 	/// Whether the button should be rendered as active
 	/// </summary>
 	[Parameter]
@@ -103,23 +109,21 @@ public class Button : TorchComponentBase
 
 	private void MakeToggleButton()
 	{
-		// ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
-		switch (Toggle!.Value)
-		{
-			case Bootstrap.Toggle.Button:
-				if (Active)
-				{
-					CssBuilder.AddClass("active");
-					UserAttributes.Add("aria-pressed", "true");
-				}
+		var value = Toggle!.Value;
 
-				break;
-			default:
-				throw new InvalidOperationException($"Buttons do support a toggle value of {Toggle!.Value}");
+		if (value is Bootstrap.Toggle.Button && Active)
+		{
+			CssBuilder.AddClass("active");
+			UserAttributes.Add("aria-pressed", "true");
 		}
 
 		UserAttributes.Add(
 			"data-bs-toggle",
-			Toggle!.Value.ToString().ToLowerInvariant());
+			value.ToString().ToLowerInvariant());
+
+		if (!string.IsNullOrEmpty(Target))
+		{
+			UserAttributes.Add("data-bs-target", Target);
+		}
 	}
 }
